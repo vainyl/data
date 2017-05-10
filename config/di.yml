@@ -3,6 +3,7 @@ services:
     class: Vainyl\Data\Factory\SourceFactory
   source.factory.logger:
     decorates: source.factory
+    class: Vainyl\Data\Factory\Decorator\LoggerSourceFactoryDecorator
     arugments: ['@source.factory.logger.inner', '@logger']
   source.storage:
     parent: storage.proxy
