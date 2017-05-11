@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Storage;
 
-use Ds\Map;
-use Vainyl\Core\Storage\Proxy\AbstractStorageProxy;
+use Vainyl\Core\Storage\Decorator\AbstractStorageDecorator;
+use Vainyl\Core\Storage\StorageInterface;
 use Vainyl\Data\Factory\SourceFactoryInterface;
 use Vainyl\Data\SourceInterface;
 
@@ -22,17 +22,17 @@ use Vainyl\Data\SourceInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class SourceStorage extends AbstractStorageProxy
+class SourceStorage extends AbstractStorageDecorator
 {
     private $sourceFactory;
 
     /**
      * SourceStorage constructor.
      *
-     * @param Map                    $storage
+     * @param StorageInterface                    $storage
      * @param SourceFactoryInterface $sourceFactory
      */
-    public function __construct(Map $storage, SourceFactoryInterface $sourceFactory)
+    public function __construct(StorageInterface $storage, SourceFactoryInterface $sourceFactory)
     {
         $this->sourceFactory = $sourceFactory;
         parent::__construct($storage);
