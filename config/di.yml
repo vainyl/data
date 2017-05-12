@@ -4,7 +4,7 @@ services:
   source.factory.logger:
     decorates: source.factory
     class: Vainyl\Data\Factory\Decorator\LoggerSourceFactoryDecorator
-    arugments: ['@source.factory.logger.inner', '@logger']
+    arugments: ['@source.factory.logger.inner', '@logger.source']
   source.storage:
     class: Vainyl\Data\Storage\SourceStorage
     arguments: ['@storage.prototype', '@source.factory']
