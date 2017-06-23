@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Extension;
 
-use Vainyl\Core\Extension\AbstractExtension;
+use Vainyl\Core\Extension\AbstractFrameworkExtension;
 
 /**
  * Class DataExtension
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class DataExtension extends AbstractExtension
+class DataExtension extends AbstractFrameworkExtension
 {
 }
