@@ -29,7 +29,7 @@ class SourceStorage extends AbstractStorageDecorator
     /**
      * SourceStorage constructor.
      *
-     * @param StorageInterface                    $storage
+     * @param StorageInterface       $storage
      * @param SourceFactoryInterface $sourceFactory
      */
     public function __construct(StorageInterface $storage, SourceFactoryInterface $sourceFactory)
