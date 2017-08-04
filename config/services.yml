@@ -7,4 +7,4 @@ services:
     arugments: ['@source.factory.logger.inner', '@logger.source']
   source.storage:
     class: Vainyl\Data\Storage\SourceStorage
-    arguments: ['@storage.prototype', '@source.factory']
+    arguments: ['@map.prototype', '@source.factory']
