@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Vainyl\Data;
 
 use Vainyl\Core\AbstractIdentifiable;
+use Vainyl\Data\Exception\CannotRetrieveDataException;
 use Vainyl\Data\Exception\UnsupportedDescriptorException;
 
 /**
@@ -22,13 +23,6 @@ use Vainyl\Data\Exception\UnsupportedDescriptorException;
  */
 abstract class AbstractSource extends AbstractIdentifiable implements SourceInterface
 {
-    /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return bool
-     */
-    abstract public function supports(DescriptorInterface $descriptor): bool;
-
     /**
      * @param DescriptorInterface $descriptor
      *
@@ -45,6 +39,17 @@ abstract class AbstractSource extends AbstractIdentifiable implements SourceInte
             throw new UnsupportedDescriptorException($this, $descriptor);
         }
 
+        if (false === $descriptor->isReadable()) {
+            throw new CannotRetrieveDataException($this, $descriptor);
+        }
+
         return $this->doGetData($descriptor);
     }
+
+    /**
+     * @param DescriptorInterface $descriptor
+     *
+     * @return bool
+     */
+    abstract public function supports(DescriptorInterface $descriptor): bool;
 }
