@@ -22,4 +22,13 @@ use Vainyl\Core\StringInterface;
  */
 interface DescriptorInterface extends IdentifiableInterface, StringInterface
 {
+    /**
+     * @return bool
+     */
+    public function isReadable() : bool;
+
+    /**
+     * @return bool
+     */
+    public function isWritable() : bool;
 }
