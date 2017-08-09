@@ -5,6 +5,12 @@ services:
     decorates: source.factory
     class: Vainyl\Data\Factory\Decorator\LoggerSourceFactoryDecorator
     arugments: ['@source.factory.logger.inner', '@logger.source']
-  source.storage:
-    class: Vainyl\Data\Storage\SourceStorage
-    arguments: ['@map.prototype', '@source.factory']
+  sink.factory:
+    class: Vainyl\Data\Factory\SinkFactory
+  sink.factory.logger:
+    decorates: sink.factory
+    class: Vainyl\Data\Factory\Decorator\LoggerSinkFactoryDecorator
+    arugments: ['@sink.factory.logger.inner', '@logger.sink']
+  handler.storage:
+    class: Vainyl\Data\Storage\HandlerStorage
+    arguments: ['@map.prototype', '@source.factory', '@sink.factory']

@@ -25,11 +25,4 @@ interface SourceInterface extends HandlerInterface
      * @return mixed
      */
     public function getData(DescriptorInterface $descriptor);
-
-    /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return bool
-     */
-    public function supports(DescriptorInterface $descriptor): bool;
 }

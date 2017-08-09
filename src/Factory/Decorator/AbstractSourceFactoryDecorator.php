@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Factory\Decorator;
 
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Data\Factory\SourceFactoryInterface;
 use Vainyl\Data\SourceInterface;
 
@@ -20,7 +21,7 @@ use Vainyl\Data\SourceInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-abstract class AbstractSourceFactoryDecorator implements SourceFactoryInterface
+abstract class AbstractSourceFactoryDecorator extends AbstractIdentifiable implements SourceFactoryInterface
 {
     private $sourceFactory;
 
@@ -32,14 +33,6 @@ abstract class AbstractSourceFactoryDecorator implements SourceFactoryInterface
     public function __construct(SourceFactoryInterface $sourceFactory)
     {
         $this->sourceFactory = $sourceFactory;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getId(): string
-    {
-        return $this->sourceFactory->getId();
     }
 
     /**

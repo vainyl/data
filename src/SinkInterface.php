@@ -19,12 +19,7 @@ namespace Vainyl\Data;
  */
 interface SinkInterface extends HandlerInterface
 {
-    /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return bool
-     */
-    public function supports(DescriptorInterface $descriptor): bool;
+
 
     /**
      * @param DescriptorInterface $descriptor

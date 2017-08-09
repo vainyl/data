@@ -21,4 +21,10 @@ use Vainyl\Core\NameableInterface;
  */
 interface HandlerInterface extends NameableInterface
 {
+    /**
+     * @param DescriptorInterface $descriptor
+     *
+     * @return bool
+     */
+    public function supports(DescriptorInterface $descriptor): bool;
 }
