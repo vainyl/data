@@ -13,23 +13,24 @@ declare(strict_types=1);
 namespace Vainyl\Data;
 
 /**
- * Interface SourceInterface
+ * Class SinkInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceInterface extends HandlerInterface
+interface SinkInterface extends HandlerInterface
 {
-    /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return mixed
-     */
-    public function getData(DescriptorInterface $descriptor);
-
     /**
      * @param DescriptorInterface $descriptor
      *
      * @return bool
      */
     public function supports(DescriptorInterface $descriptor): bool;
+
+    /**
+     * @param DescriptorInterface $descriptor
+     * @param mixed               $data
+     *
+     * @return mixed
+     */
+    public function writeData(DescriptorInterface $descriptor, $data): bool;
 }

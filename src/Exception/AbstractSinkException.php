@@ -12,32 +12,32 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Exception;
 
-use Vainyl\Data\SourceInterface;
+use Vainyl\Data\SinkInterface;
 
 /**
- * Class AbstractSourceException
+ * Class AbstractSinkException
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-abstract class AbstractSourceException extends AbstractHandlerException implements SourceExceptionInterface
+abstract class AbstractSinkException extends AbstractHandlerException implements SinkExceptionInterface
 {
     /**
-     * AbstractSourceException constructor.
+     * AbstractSinkException constructor.
      *
-     * @param SourceInterface $handler
+     * @param SinkInterface   $sink
      * @param string          $message
      * @param int             $code
      * @param \Exception|null $previous
      */
-    public function __construct(SourceInterface $handler, string $message, int $code = 500, \Exception $previous = null)
+    public function __construct(SinkInterface $sink, string $message, int $code = 500, \Exception $previous = null)
     {
-        parent::__construct($handler, $message, $code, $previous);
+        parent::__construct($sink, $message, $code, $previous);
     }
 
     /**
      * @inheritDoc
      */
-    public function getSource(): SourceInterface
+    public function getSink(): SinkInterface
     {
         return $this->getHandler();
     }

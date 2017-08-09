@@ -13,31 +13,31 @@ declare(strict_types=1);
 namespace Vainyl\Data\Exception;
 
 use Vainyl\Data\DescriptorInterface;
-use Vainyl\Data\SourceInterface;
+use Vainyl\Data\SinkInterface;
 
 /**
  * Class CannotRetrieveDataException
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class CannotRetrieveDataException extends AbstractSourceException
+class CannotWriteDataException extends AbstractSinkException
 {
     private $descriptor;
 
     /**
      * CannotRetrieveDataException constructor.
      *
-     * @param SourceInterface     $handler
+     * @param SinkInterface       $sink
      * @param DescriptorInterface $descriptor
      */
-    public function __construct(SourceInterface $handler, DescriptorInterface $descriptor)
+    public function __construct(SinkInterface $sink, DescriptorInterface $descriptor)
     {
         $this->descriptor = $descriptor;
         parent::__construct(
-            $handler,
+            $sink,
             sprintf(
-                'Cannot retrieve data from source %s by descriptor %s',
-                $handler->getName(),
+                'Cannot write data to sink %s by descriptor %s',
+                $sink->getName(),
                 $descriptor->__toString()
             )
         );

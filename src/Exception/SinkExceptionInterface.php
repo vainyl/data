@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Exception;
 
-use Vainyl\Data\SourceInterface;
+use Vainyl\Data\SinkInterface;
 
 /**
- * Interface SourceExceptionInterface
+ * Interface SinkExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceExceptionInterface extends HandlerExceptionInterface
+interface SinkExceptionInterface extends HandlerExceptionInterface
 {
     /**
-     * @return SourceInterface
+     * @return SinkInterface
      */
-    public function getSource(): SourceInterface;
+    public function getSink() : SinkInterface;
 }

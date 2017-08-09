@@ -13,36 +13,37 @@ declare(strict_types=1);
 namespace Vainyl\Data;
 
 use Vainyl\Core\AbstractIdentifiable;
-use Vainyl\Data\Exception\CannotRetrieveDataException;
+use Vainyl\Data\Exception\CannotWriteDataException;
 use Vainyl\Data\Exception\UnsupportedDescriptorException;
 
 /**
- * Class AbstractSource
+ * Class AbstractSink
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-abstract class AbstractSource extends AbstractIdentifiable implements SourceInterface
+abstract class AbstractSink extends AbstractIdentifiable implements SinkInterface
 {
     /**
      * @param DescriptorInterface $descriptor
+     * @param mixed               $data
      *
-     * @return mixed
+     * @return bool
      */
-    abstract public function doGetData(DescriptorInterface $descriptor);
+    abstract public function doWriteData(DescriptorInterface $descriptor, $data): bool;
 
     /**
      * @inheritDoc
      */
-    public function getData(DescriptorInterface $descriptor)
+    public function writeData(DescriptorInterface $descriptor, $data): bool
     {
         if (false === $this->supports($descriptor)) {
             throw new UnsupportedDescriptorException($this, $descriptor);
         }
 
-        if (false === $descriptor->isReadable()) {
-            throw new CannotRetrieveDataException($this, $descriptor);
+        if (false === $descriptor->isWritable()) {
+            throw new CannotWriteDataException($this, $descriptor);
         }
 
-        return $this->doGetData($descriptor);
+        return $this->doWriteData($descriptor, $data);
     }
 }

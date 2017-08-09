@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Exception;
 
-use Vainyl\Data\SourceInterface;
+use Vainyl\Data\HandlerInterface;
 
 /**
- * Interface SourceExceptionInterface
+ * Interface HandlerExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceExceptionInterface extends HandlerExceptionInterface
+interface HandlerExceptionInterface extends \Throwable
 {
     /**
-     * @return SourceInterface
+     * @return HandlerInterface
      */
-    public function getSource(): SourceInterface;
+    public function getHandler() : HandlerInterface;
 }
