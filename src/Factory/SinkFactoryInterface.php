@@ -10,25 +10,22 @@
  */
 declare(strict_types=1);
 
-namespace Vainyl\Data;
+namespace Vainyl\Data\Factory;
 
 use Vainyl\Core\IdentifiableInterface;
-use Vainyl\Core\StringInterface;
+use Vainyl\Data\SinkInterface;
 
 /**
- * Interface DescriptorInterface
+ * Interface SinkFactoryInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface DescriptorInterface extends IdentifiableInterface, StringInterface
+interface SinkFactoryInterface extends IdentifiableInterface
 {
     /**
-     * @return bool
+     * @param SinkInterface $sink
+     *
+     * @return SinkInterface
      */
-    public function isReadable() : bool;
-
-    /**
-     * @return bool
-     */
-    public function isWritable() : bool;
+    public function decorate(SinkInterface $sink): SinkInterface;
 }

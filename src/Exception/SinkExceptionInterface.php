@@ -10,19 +10,19 @@
  */
 declare(strict_types=1);
 
-namespace Vainyl\Data;
+namespace Vainyl\Data\Exception;
+
+use Vainyl\Data\SinkInterface;
 
 /**
- * Interface SourceInterface
+ * Interface SinkExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceInterface extends HandlerInterface
+interface SinkExceptionInterface extends HandlerExceptionInterface
 {
     /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return mixed
+     * @return SinkInterface
      */
-    public function getData(DescriptorInterface $descriptor);
+    public function getSink() : SinkInterface;
 }

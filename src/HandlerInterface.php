@@ -12,17 +12,19 @@ declare(strict_types=1);
 
 namespace Vainyl\Data;
 
+use Vainyl\Core\NameableInterface;
+
 /**
- * Interface SourceInterface
+ * Interface HandlerInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceInterface extends HandlerInterface
+interface HandlerInterface extends NameableInterface
 {
     /**
      * @param DescriptorInterface $descriptor
      *
-     * @return mixed
+     * @return bool
      */
-    public function getData(DescriptorInterface $descriptor);
+    public function supports(DescriptorInterface $descriptor): bool;
 }

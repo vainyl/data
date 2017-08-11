@@ -10,19 +10,19 @@
  */
 declare(strict_types=1);
 
-namespace Vainyl\Data;
+namespace Vainyl\Data\Exception;
+
+use Vainyl\Data\HandlerInterface;
 
 /**
- * Interface SourceInterface
+ * Interface HandlerExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceInterface extends HandlerInterface
+interface HandlerExceptionInterface extends \Throwable
 {
     /**
-     * @param DescriptorInterface $descriptor
-     *
-     * @return mixed
+     * @return HandlerInterface
      */
-    public function getData(DescriptorInterface $descriptor);
+    public function getHandler() : HandlerInterface;
 }

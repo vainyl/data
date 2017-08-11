@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Vainyl\Data\Exception;
 
-use Vainyl\Core\Exception\CoreExceptionInterface;
 use Vainyl\Data\SourceInterface;
 
 /**
@@ -20,7 +19,7 @@ use Vainyl\Data\SourceInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface SourceExceptionInterface extends CoreExceptionInterface
+interface SourceExceptionInterface extends HandlerExceptionInterface
 {
     /**
      * @return SourceInterface

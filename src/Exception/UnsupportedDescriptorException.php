@@ -13,31 +13,31 @@ declare(strict_types=1);
 namespace Vainyl\Data\Exception;
 
 use Vainyl\Data\DescriptorInterface;
-use Vainyl\Data\SourceInterface;
+use Vainyl\Data\HandlerInterface;
 
 /**
  * Class UnsupportedDescriptorException
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class UnsupportedDescriptorException extends AbstractSourceException
+class UnsupportedDescriptorException extends AbstractHandlerException
 {
     private $descriptor;
 
     /**
      * UnsupportedDescriptorException constructor.
      *
-     * @param SourceInterface     $source
+     * @param HandlerInterface    $handler
      * @param DescriptorInterface $descriptor
      */
-    public function __construct(SourceInterface $source, DescriptorInterface $descriptor)
+    public function __construct(HandlerInterface $handler, DescriptorInterface $descriptor)
     {
         $this->descriptor = $descriptor;
         parent::__construct(
-            $source,
+            $handler,
             sprintf(
-                'Source %s does not support descriptor %s',
-                $source->getName(),
+                'Handler %s does not support descriptor %s',
+                $handler->getName(),
                 $descriptor->__toString()
             )
         );
