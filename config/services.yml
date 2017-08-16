@@ -1,16 +1,20 @@
 services:
+  logger.data:
+    synthetic: true
+    tags:
+      - {name: 'logger', channel: 'data'}
   source.factory:
     class: Vainyl\Data\Factory\SourceFactory
   source.factory.logger:
     decorates: source.factory
     class: Vainyl\Data\Factory\Decorator\LoggerSourceFactoryDecorator
-    arguments: ['@source.factory.logger.inner', '@logger.source']
+    arguments: ['@source.factory.logger.inner', '@logger.data']
   sink.factory:
     class: Vainyl\Data\Factory\SinkFactory
   sink.factory.logger:
     decorates: sink.factory
     class: Vainyl\Data\Factory\Decorator\LoggerSinkFactoryDecorator
-    arguments: ['@sink.factory.logger.inner', '@logger.sink']
+    arguments: ['@sink.factory.logger.inner', '@logger.data']
   handler.storage:
     class: Vainyl\Data\Storage\HandlerStorage
     arguments: ['@map.prototype', '@source.factory', '@sink.factory']
