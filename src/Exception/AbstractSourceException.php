@@ -27,9 +27,9 @@ abstract class AbstractSourceException extends AbstractHandlerException implemen
      * @param SourceInterface $handler
      * @param string          $message
      * @param int             $code
-     * @param \Exception|null $previous
+     * @param \Throwable|null $previous
      */
-    public function __construct(SourceInterface $handler, string $message, int $code = 500, \Exception $previous = null)
+    public function __construct(SourceInterface $handler, string $message, int $code = 500, \Throwable $previous = null)
     {
         parent::__construct($handler, $message, $code, $previous);
     }

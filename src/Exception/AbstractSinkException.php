@@ -27,9 +27,9 @@ abstract class AbstractSinkException extends AbstractHandlerException implements
      * @param SinkInterface   $sink
      * @param string          $message
      * @param int             $code
-     * @param \Exception|null $previous
+     * @param \Throwable|null $previous
      */
-    public function __construct(SinkInterface $sink, string $message, int $code = 500, \Exception $previous = null)
+    public function __construct(SinkInterface $sink, string $message, int $code = 500, \Throwable $previous = null)
     {
         parent::__construct($sink, $message, $code, $previous);
     }

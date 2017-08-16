@@ -30,13 +30,13 @@ abstract class AbstractHandlerException extends AbstractCoreException implements
      * @param HandlerInterface $handler
      * @param string           $message
      * @param int              $code
-     * @param \Exception|null  $previous
+     * @param \Throwable|null  $previous
      */
     public function __construct(
         HandlerInterface $handler,
         string $message,
         int $code = 500,
-        \Exception $previous = null
+        \Throwable $previous = null
     ) {
         $this->handler = $handler;
         parent::__construct($message, $code, $previous);
